@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.walee.bmi.User_Data">
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <EditText
+            android:id="@+id/FirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="FirstName"
+            tools:text="FirstName" />
+
+        <EditText
+            android:id="@+id/LastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="LastName"
+            tools:text="LastName" />
+
+        <EditText
+            android:id="@+id/DateOfBirth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
+            android:text="DateOfBirth"
+            tools:text="DateOfBirth" />
+
+        <EditText
+            android:id="@+id/HCN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text="Health Card Number"
+            tools:text="Health Card Number" />
+
+        <Button
+            android:id="@+id/ConfirmInformation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Confirm Information"
+            tools:text="Confirm Information" />
+
+        <Button
+            android:id="@+id/LogOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickEvent2"
+            android:text="LogOut"
+            tools:text="Log Out" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
