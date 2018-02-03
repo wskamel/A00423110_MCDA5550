@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".User_Data"></activity>
+        <activity android:name=".User_Data" />
+        <activity android:name=".USER_BMI"></activity>
     </application>
 
 </manifest>
