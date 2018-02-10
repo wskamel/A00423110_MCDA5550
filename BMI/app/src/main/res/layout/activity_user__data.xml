@@ -14,25 +14,25 @@
         tools:layout_editor_absoluteY="8dp">
 
         <EditText
-            android:id="@+id/FirstName"
+            android:id="@+id/txtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="FirstName"
-            tools:text="FirstName" />
+            android:text="Name"
+            tools:text="Name" />
 
         <EditText
-            android:id="@+id/LastName"
+            android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="LastName"
-            tools:text="LastName" />
+            android:text="Email"
+            tools:text="Email" />
 
         <EditText
-            android:id="@+id/DateOfBirth"
+            android:id="@+id/txtDateOfBirth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -41,13 +41,22 @@
             tools:text="DateOfBirth" />
 
         <EditText
-            android:id="@+id/HCN"
+            android:id="@+id/txtHCN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
             android:text="Health Card Number"
             tools:text="Health Card Number" />
+
+        <EditText
+            android:id="@+id/textUserPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:text="Password"
+            tools:text="Password" />
 
         <Button
             android:id="@+id/ConfirmInformation"

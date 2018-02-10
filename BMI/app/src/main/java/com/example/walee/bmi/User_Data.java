@@ -18,16 +18,38 @@ public class User_Data extends AppCompatActivity {
         BMIDATABASE helper = new BMIDATABASE(this);
         SQLiteDatabase db = helper.getWritableDatabase();
         Cursor cursor = db.query(BMIDATABASE.TABLE_NAME,new String[]
-                {"NAME","PASSWORD","DOB"},null,null,null,null,null);
+                {"NAME","EMAIL","PASSWORD","HEALTH_CARD_NUMB","DOB"},null,null,null,null,null);
 
 
 
-        if (cursor.moveToFirst())  {
+   //     if (cursor.moveToFirst())  {
+
+        try {
+            while (cursor.moveToNext()) {
             String name = cursor.getString(0);
+            EditText Username =(EditText) findViewById(R.id.txtName);
+            Username.setText(name);
 
-            EditText result =(EditText) findViewById(R.id.FirstName);
-            result.setText(name);
-        }
+            String email = cursor.getString(1);
+            EditText UserEmail =(EditText) findViewById(R.id.txtEmail);
+                UserEmail.setText(email);
+
+            String password = cursor.getString(2);
+            EditText userPassword =(EditText) findViewById(R.id.textUserPassword);
+            userPassword.setText(password);
+
+            //HCN is HEALTH_CARD_NUMB
+            String HCN = cursor.getString(3);
+            EditText userHCN =(EditText) findViewById(R.id.txtHCN);
+                userHCN.setText(HCN);
+
+            //DOB is Date Of Birth
+            String DOB = cursor.getString(4);
+            EditText userDOB =(EditText) findViewById(R.id.txtDateOfBirth);
+                userDOB.setText(DOB);
+
+
+        }} finally {}
     }
 
     public void  onClickEvent2(View view) {
