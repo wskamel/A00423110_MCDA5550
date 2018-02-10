@@ -65,5 +65,12 @@
             android:text="LogOut"
             tools:text="Log Out" />
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:srcCompat="?android:attr/actionModeShareDrawable" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
