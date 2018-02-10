@@ -58,19 +58,19 @@
             tools:text="Confirm Information and open BMI CALC" />
 
         <Button
+            android:id="@+id/NavToBMIList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickNavToBMIList"
+            android:text="BMI List" />
+
+        <Button
             android:id="@+id/LogOut"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onClickEvent2"
             android:text="LogOut"
             tools:text="Log Out" />
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            app:srcCompat="?android:attr/actionModeShareDrawable" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

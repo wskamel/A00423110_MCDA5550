@@ -27,8 +27,17 @@
             android:layout_height="wrap_content"
             android:ems="10"
 
-            android:text="User_Height"
+            android:text="User_Weight"
             tools:text="User Weight" />
+
+        <EditText
+            android:id="@+id/RecordDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
+            android:text="Date"
+            tools:text="Date" />
 
         <Button
             android:id="@+id/Calculatebtn"

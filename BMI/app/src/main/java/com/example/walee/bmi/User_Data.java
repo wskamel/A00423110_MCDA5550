@@ -18,7 +18,7 @@ public class User_Data extends AppCompatActivity {
         BMIDATABASE helper = new BMIDATABASE(this);
         SQLiteDatabase db = helper.getWritableDatabase();
         Cursor cursor = db.query(BMIDATABASE.TABLE_NAME,new String[]
-                {"NAME","PASSWORD","DATE"},null,null,null,null,null);
+                {"NAME","PASSWORD","DOB"},null,null,null,null,null);
 
 
 
@@ -41,6 +41,10 @@ public class User_Data extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void  onClickNavToBMIList(View view) {
+        Intent intent = new Intent(this,BMIListActivity.class);
+        startActivity(intent);
+    }
 
 
 
