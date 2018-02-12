@@ -17,67 +17,58 @@
             android:id="@+id/txtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name"
-            tools:text="Name" />
+            android:hint="Name (Alphabets and space only)"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Email"
-            tools:text="Email" />
+            android:hint="Email  Address (Must contain @ and . )"
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/txtDateOfBirth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="/0123456789"
             android:ems="10"
-            android:inputType="date"
-            android:text="DateOfBirth"
-            tools:text="DateOfBirth" />
+            android:hint="Date Of Birth (mm/dd/yyyy)"
+            android:inputType="date" />
 
         <EditText
             android:id="@+id/txtHCN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="0123456789"
             android:ems="10"
-            android:inputType="number"
-            android:text="Health Card Number"
-            tools:text="Health Card Number" />
+            android:hint="Health Card Number (Integer number only)"
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/textUserPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
             android:ems="10"
-            android:inputType="textPassword"
-            android:text="Password"
-            tools:text="Password" />
+            android:hint="Password ( minimum 4 Alphanumeric)"
+            android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/ConfirmInformation"
+            android:id="@+id/btnconfirmUserData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClickEvent3"
-            android:text="Confirm Information and open BMI CALC"
-            tools:text="Confirm Information and open BMI CALC" />
-
-        <Button
-            android:id="@+id/NavToBMIList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onClickNavToBMIList"
-            android:text="BMI List" />
+            android:onClick="clickConfirmUserData"
+            android:text="Confirm User Information" />
 
         <Button
             android:id="@+id/LogOut"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClickEvent2"
+            android:onClick="clickLogout"
             android:text="LogOut"
             tools:text="Log Out" />
 

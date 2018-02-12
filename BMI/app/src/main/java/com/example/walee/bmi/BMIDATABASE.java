@@ -47,7 +47,7 @@ import java.util.Date;
       personValues.put("HEALTH_CARD_NUMB","1234");
       personValues.put("DOB", "5/11/2018");
 
-      db.insert(TABLE_NAME,null,personValues);
+ //     db.insert(TABLE_NAME,null,personValues);
 
 
 

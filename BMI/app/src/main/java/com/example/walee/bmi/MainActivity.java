@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -30,8 +31,24 @@ public class MainActivity extends AppCompatActivity {
             String name = cursor.getString(0);
             Password= cursor.getString(1);
 
-            EditText result =(EditText) findViewById(R.id.UserName);
+            EditText result =(EditText) findViewById(R.id.textUserName);
             result.setText(name);
+        } else {
+
+            Button pleaseRegister = (Button) findViewById(R.id.btnRegister);
+            pleaseRegister.setVisibility(View.VISIBLE);
+
+            Button login = (Button) findViewById(R.id.btnLogin);
+            login.setEnabled(false);
+
+            EditText userName = (EditText) findViewById(R.id.textUserName);
+            userName.setEnabled(false);
+
+            EditText password = (EditText) findViewById(R.id.textPassword);
+            password.setEnabled(false);
+
+
+
         }
 
 
@@ -50,4 +67,11 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+    public void  clickRegister(View view) {
+        Intent intent = new Intent(this, User_Data.class);
+        startActivity(intent);
+    }
+
+
 }
