@@ -34,7 +34,7 @@
             android:id="@+id/txtDateOfBirth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:digits="/0123456789"
+            android:editable="false"
             android:ems="10"
             android:hint="Date Of Birth (mm/dd/yyyy)"
             android:inputType="date" />

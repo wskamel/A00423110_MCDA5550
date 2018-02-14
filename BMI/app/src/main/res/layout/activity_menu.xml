@@ -14,6 +14,13 @@
         tools:layout_editor_absoluteY="8dp">
 
         <Button
+            android:id="@+id/btnUserData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clickEditUserData"
+            android:text="Edit User Data" />
+
+        <Button
             android:id="@+id/btnCalcBMI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,5 +41,6 @@
             android:onClick="clickLogout"
             android:text="LogOut"
             tools:text="Log Out" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

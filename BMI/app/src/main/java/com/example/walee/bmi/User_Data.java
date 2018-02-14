@@ -1,5 +1,8 @@
 package com.example.walee.bmi;
 
+import android.app.DatePickerDialog;
+import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -7,18 +10,65 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
+import static com.example.walee.bmi.BMIDATABASE.TABLE_NAME;
 
 public class User_Data extends AppCompatActivity {
+
+    Context context = this;
+    EditText dob;
+    Calendar dobCalendar = Calendar.getInstance();
+    String dobformat = "dd/MM/yy";
+    DatePickerDialog.OnDateSetListener date;
+    SimpleDateFormat sdf = new SimpleDateFormat(dobformat, Locale.CANADA);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user__data);
 
+        EditText dob = (EditText) findViewById(R.id.txtDateOfBirth);
+
+        // set calendar date and update editDate
+
+        date = new DatePickerDialog.OnDateSetListener(){
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                dobCalendar.set(Calendar.YEAR, year);
+                dobCalendar.set(Calendar.MONTH, monthOfYear);
+                dobCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateDate();
+            } };
+        // onclick - popup datepicker
+        dob.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                new DatePickerDialog(context, date, dobCalendar
+                        .get(Calendar.YEAR), dobCalendar.get(Calendar.MONTH),
+                        dobCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
+
         BMIDATABASE helper = new BMIDATABASE(this);
         SQLiteDatabase db = helper.getWritableDatabase();
-        Cursor cursor = db.query(BMIDATABASE.TABLE_NAME,new String[]
+        Cursor cursor = db.query(TABLE_NAME,new String[]
                 {"NAME","EMAIL","PASSWORD","HEALTH_CARD_NUMB","DOB"},null,null,null,null,null);
 
 
@@ -86,7 +136,7 @@ public class User_Data extends AppCompatActivity {
             email.setError("Email is empty!");
             invalidData = true;     }
 
-        if( emailValue.length()>0 && !emailValue.contains("@") || !emailValue.contains("."))  {
+        if( emailValue.length()>0 && (!emailValue.contains(".") || !emailValue.contains("@")))  {
             email.setError("Invalid Email format!");
             invalidData = true;     }
 
@@ -108,28 +158,51 @@ public class User_Data extends AppCompatActivity {
             invalidData = true;     }
 
         if(dobValue.length()>0) {
-            if ( TextUtils.isDigitsOnly(dobValue.substring(1,2)) && TextUtils.isDigitsOnly(dobValue.substring(4,5)) && TextUtils.isDigitsOnly(dobValue.substring(7,10))  )
+           Date todayDate = Calendar.getInstance().getTime();
 
-            {   Integer month = Integer.parseInt(dobValue.substring(1,2));
-                Integer day = Integer.parseInt(dobValue.substring(4,5));
-                Integer year = Integer.parseInt(dobValue.substring(7,10));
-
-            //    if  ( month <1 || month >12  ||  )
+           Date dobdate = dobCalendar.getTime() ;
 
 
-            } else  {  dob.setError("Inavlid format for Date of Birth !");
-                        invalidData = true;}
+            if ( todayDate.getTime() - dobdate.getTime() <0   )
 
+            {   dob.setError("Date of Birth is in Future!");
+                invalidData = true;
+
+            }
 
         }
 
 
         if(!invalidData){
 
-        Intent intent = new Intent(this,USER_BMI.class);
-        startActivity(intent); }
+            Date today = new Date();
+            ContentValues personValues = new ContentValues();
+            personValues.put("NAME",nameValue);
+            personValues.put("EMAIL",emailValue);
+            personValues.put("PASSWORD",passwordValue);
+            personValues.put("HEALTH_CARD_NUMB",hcnValue);
+            personValues.put("DOB", dobValue);
+
+            BMIDATABASE helper = new BMIDATABASE(this);
+            SQLiteDatabase db = helper.getWritableDatabase();
+            db.execSQL("delete from "+ TABLE_NAME);
+            db.insert(TABLE_NAME,null,personValues);
+
+            Toast.makeText(this, "User Data Saved", Toast.LENGTH_SHORT).show();
+
+
+        Intent intent = new Intent(this,Menu.class);
+        startActivity(intent); } else {
+            Toast.makeText(this, "Invalid Data!", Toast.LENGTH_SHORT).show();
+        }
     }
 
+
+    private void updateDate() {
+        EditText dob = (EditText) findViewById(R.id.txtDateOfBirth);
+        dob.setError(null);
+        dob.setText(sdf.format(dobCalendar.getTime()));
+    }
 
 
 

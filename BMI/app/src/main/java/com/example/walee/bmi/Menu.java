@@ -28,4 +28,9 @@ public class Menu extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void  clickEditUserData(View view) {
+        Intent intent = new Intent(this,User_Data.class);
+        startActivity(intent);
+    }
+
 }

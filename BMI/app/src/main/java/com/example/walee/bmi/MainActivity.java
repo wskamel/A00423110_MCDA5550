@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         String PasswordValue = weight.getText().toString();
 
         if ( PasswordValue.equals(Password) ) {
-            Intent intent = new Intent(this,User_Data.class);
+            Intent intent = new Intent(this,Menu.class);
             startActivity(intent);
         }else {
             Toast.makeText(this, "Password Incorrect!", Toast.LENGTH_SHORT).show();
