@@ -72,5 +72,13 @@
             android:text="LogOut"
             tools:text="Log Out" />
 
+        <Button
+            android:id="@+id/btnMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clickGoMenuPage"
+            android:text="Return to Menu"
+            android:visibility="invisible" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

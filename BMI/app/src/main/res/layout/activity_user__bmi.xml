@@ -16,28 +16,26 @@
             android:id="@+id/textHeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:digits="0123456789."
             android:ems="10"
-
-            android:text="User_Height"
-            tools:text="User Height" />
+            android:hint="Height ( in Meters between 1 and 2.2)" />
 
         <EditText
             android:id="@+id/textWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-
-            android:text="User_Weight"
-            tools:text="User Weight" />
+            android:digits="0123456789."
+            android:hint="Weight( in Kg betwen 40 and 120)" />
 
         <EditText
             android:id="@+id/RecordDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:editable="false"
             android:ems="10"
-            android:inputType="date"
-            android:text="Date"
-            tools:text="Date" />
+            android:hint="Date"
+            android:inputType="date" />
 
         <Button
             android:id="@+id/Calculatebtn"
@@ -51,13 +49,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            tools:text="BMI Value" />
+            android:hint="BMI Value"
+            android:inputType="textPersonName" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/textSuggestion"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"></LinearLayout>
+            android:layout_height="40dp" />
+
+        <Button
+            android:id="@+id/btnGotoMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clickMenuPage"
+            android:text="Return To Menu" />
 
     </LinearLayout>
 

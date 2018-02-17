@@ -1,55 +1,33 @@
 package com.example.walee.bmi;
 
-import android.app.ListActivity;
-import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.view.View;
-import android.database.Cursor;
-import android.widget.TextView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class BMIListActivity extends ListActivity {
+import static com.example.walee.bmi.BMIDATABASE.TABLE_NAME;
+import static com.example.walee.bmi.BMIDATABASE.Tbl_BMIRecords;
 
-    //Create dummy data until database is ready .. Add to activity
-//    BMIResult[] results = {new BMIResult(5.5,100), new BMIResult(4.3,156)};
-
-
+public class BMIRecordsList extends AppCompatActivity {
 
     ArrayList<BMIResult> results = new ArrayList<BMIResult>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //   setContentView(R.layout.activity_bmilist);   // List activity does this
-
-
-        setContentView(R.layout.activity_bmilist);
-
-
+        setContentView(R.layout.activity_bmirecords_list);
 
         BMIDATABASE helper = new BMIDATABASE(this);
         SQLiteDatabase db = helper.getWritableDatabase();
         Cursor cursor = db.query(BMIDATABASE.Tbl_BMIRecords, new String[]
                 {"height", "weight", "bmi", "DATE"}, null, null, null, null, null);
-
-
-        //Add to "onCreate" to initialise the list
-        ListView listBMIResults = getListView();
-
-
 
 
         try {
@@ -75,29 +53,32 @@ public class BMIListActivity extends ListActivity {
         }
 
 
-
         Log.d("Results empty", ""+results.isEmpty() );
         BMIListAdapter adapter = new BMIListAdapter(this, results);
         ListView listView = (ListView) findViewById(R.id.layoutBMIList);
         listView.setAdapter(adapter);
 
 
-        // old code for single column
-        ArrayAdapter<BMIResult> listAdapter = new ArrayAdapter<BMIResult>(
-                this,
-                android.R.layout.simple_list_item_1,  //layout param for ListActivity
-                results);
-        listBMIResults.setAdapter(listAdapter);
-
     }
 
     //Add to Activity to do something on click
-    public void onListItemClick(ListView listView,
-                                View itemView,
-                                int position,
-                                long id) {
-        Toast.makeText(getApplicationContext(), "Clicked on" + results.get(position).toString(), Toast.LENGTH_LONG).show();
 
+
+    public void  clickDeleteRecords(View view) {
+
+        BMIDATABASE helper = new BMIDATABASE(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.execSQL("delete from "+ Tbl_BMIRecords);
+
+        Intent intent = new Intent(this,BMIRecordsList.class);
+        startActivity(intent);
+
+        Toast.makeText(this, "Records deleted", Toast.LENGTH_SHORT).show();
+    }
+
+    public void  clickReturnToMenu(View view) {
+        Intent intent = new Intent(this,Menu.class);
+        startActivity(intent);
     }
 
 }

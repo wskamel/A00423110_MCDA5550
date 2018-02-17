@@ -14,7 +14,7 @@ public class Menu extends AppCompatActivity {
     }
 
     public void  clickBMIRecordlist(View view) {
-        Intent intent = new Intent(this,BMIListActivity.class);
+        Intent intent = new Intent(this,BMIRecordsList.class);
         startActivity(intent);
     }
 

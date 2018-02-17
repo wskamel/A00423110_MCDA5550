@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -98,6 +99,9 @@ public class User_Data extends AppCompatActivity {
             String DOB = cursor.getString(4);
             EditText userDOB =(EditText) findViewById(R.id.txtDateOfBirth);
                 userDOB.setText(DOB);
+
+                Button menuPage = (Button) findViewById(R.id.btnMenu);
+                menuPage.setVisibility(View.VISIBLE);
 
 
         }} finally {}
@@ -204,6 +208,9 @@ public class User_Data extends AppCompatActivity {
         dob.setText(sdf.format(dobCalendar.getTime()));
     }
 
-
+    public void  clickGoMenuPage(View view) {
+        Intent intent = new Intent(this,Menu.class);
+        startActivity(intent);
+    }
 
 }
