@@ -20,29 +20,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Call Database and Query Name and Password
+
         BMIDATABASE helper = new BMIDATABASE(this);
         SQLiteDatabase db = helper.getWritableDatabase();
         Cursor cursor = db.query(BMIDATABASE.TABLE_NAME,new String[]
                 {"NAME","PASSWORD"},null,null,null,null,null);
+
+        // Name is either in Database or should be entered in User Data Activity hence always disabled
+
+        EditText userName = (EditText) findViewById(R.id.textUserName);
+        userName.setEnabled(false);
 
 
 
         if (cursor.moveToFirst())  {
             String name = cursor.getString(0);
             Password= cursor.getString(1);
-
-            EditText result =(EditText) findViewById(R.id.textUserName);
-            result.setText(name);
+            userName.setText(name);
         } else {
+
+            // No user is registered  , disbale all buttons except registeration
 
             Button pleaseRegister = (Button) findViewById(R.id.btnRegister);
             pleaseRegister.setVisibility(View.VISIBLE);
 
             Button login = (Button) findViewById(R.id.btnLogin);
             login.setEnabled(false);
-
-            EditText userName = (EditText) findViewById(R.id.textUserName);
-            userName.setEnabled(false);
 
             EditText password = (EditText) findViewById(R.id.textPassword);
             password.setEnabled(false);
@@ -56,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void  onClickEvent(View view) {
 
-        EditText weight = (EditText) findViewById(R.id.textPassword);
-        String PasswordValue = weight.getText().toString();
+        EditText password = (EditText) findViewById(R.id.textPassword);
+        String PasswordValue = password.getText().toString();
 
         if ( PasswordValue.equals(Password) ) {
             Intent intent = new Intent(this,Menu.class);

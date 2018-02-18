@@ -141,7 +141,7 @@ public class USER_BMI extends AppCompatActivity {
 
             if ( todayDate.getTime() - dobdate.getTime() <0   )
 
-            {   recordDate.setError("Date of Birth is in Future!");
+            {   recordDate.setError("Date of BMI check is in Future!");
                 invalidData = true;
 
             }
@@ -173,10 +173,12 @@ public class USER_BMI extends AppCompatActivity {
             if (Calc < 18.5) {
                 Suggestion.setText("your BMI is considered underweight. Consult Doctor!");
                 Suggestion.setTextColor(Color.RED);
+                Suggestion.setBackgroundColor(Color.BLACK);
                 Suggestion.setTextSize(14);
             } else if (Calc < 24.9) {
                 Suggestion.setText("your BMI is considered Healthy. Good job!");
                 Suggestion.setTextColor(Color.GREEN);
+                Suggestion.setBackgroundColor(Color.BLACK);
                 Suggestion.setTextSize(14);
             } else if (Calc < 29.9) {
                 Suggestion.setText("your BMI is considered overweight. Please exercise!");
@@ -186,6 +188,7 @@ public class USER_BMI extends AppCompatActivity {
             } else {
                 Suggestion.setText("your BMI is considered obese. Consult Doctor!");
                 Suggestion.setTextColor(Color.RED);
+                Suggestion.setBackgroundColor(Color.BLACK);
                 Suggestion.setTextSize(14);
             }
         }else {

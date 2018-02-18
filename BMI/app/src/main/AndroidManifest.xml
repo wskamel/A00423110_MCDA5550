@@ -23,10 +23,6 @@
         </activity>
         <activity android:name=".User_Data" />
         <activity android:name=".USER_BMI" />
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity android:name=".BMIListActivity" />
         <activity android:name=".Menu" />
         <activity android:name=".BMIRecordsList"></activity>
     </application>
